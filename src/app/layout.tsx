@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Consulta CNPJ",
-  description: "Desenvolvido por Nodic-Tech",
+  description: "Desenvolvido por Nordic-Tech",
 };
 
 export default function RootLayout({
