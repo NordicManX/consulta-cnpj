@@ -95,18 +95,20 @@ export default function Home() {
         </div>
 
       
-        <form onSubmit={handleSearch} className="w-full max-w-3xl mx-auto flex items-center gap-4 print:hidden">
+        <form onSubmit={handleSearch} className="w-full max-w-3xl mx-auto flex flex-col sm:flex-row items-center gap-4 print:hidden">
           <input
             type="text"
             value={cnpjInput}
             onChange={handleInputChange}
             placeholder="00.000.000/0000-00"
-            className="flex-1 px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-lg text-gray-900 placeholder-gray-400 bg-white"
+            // Trocamos flex-1 por w-full no mobile, e sm:flex-1 no desktop
+            className="w-full sm:flex-1 px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-lg text-gray-900 placeholder-gray-400 bg-white"
           />
           <button
             type="submit"
             disabled={isLoading || cnpjInput.length < 18}
-            className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-sm hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all whitespace-nowrap"
+            // Trocamos o tamanho para w-full no mobile, e sm:w-auto no desktop
+            className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-sm hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all whitespace-nowrap"
           >
             {isLoading ? 'Buscando...' : 'Consultar'}
           </button>
@@ -142,7 +144,7 @@ export default function Home() {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                 </svg>
-                Imprimir Relatório
+                
               </button>
             </div>
 
