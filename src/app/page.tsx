@@ -226,6 +226,9 @@ export default function Home() {
           </div>
         )}
       </div>
+      <footer className="mt-12 text-center text-gray-500 text-sm print:hidden">
+        Desenvolvido por Nordic-Tech - 2026. Consulta CNPJ. Dados fornecidos por API pública do Governo Brasileiro.
+      </footer>
     </main>
   );
 }
