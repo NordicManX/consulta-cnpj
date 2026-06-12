@@ -84,17 +84,17 @@ export default function Home() {
   };
 
   return (
-    // Adicionamos print:p-0 e print:bg-white para remover as margens e fundos escuros da página impressa
+    
     <main className="min-h-screen bg-gray-50 p-4 md:p-8 flex flex-col items-center justify-start pt-16 font-sans print:p-8 print:pt-16 print:bg-white">
       <div className="w-full max-w-4xl space-y-6 print:max-w-full">
         
-        {/* Cabeçalho - Escondido na impressão */}
+
         <div className="text-center space-y-2 print:hidden">
           <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Consulta de CNPJ</h1>
           <p className="text-gray-500 max-w-md mx-auto">Consulta profunda de dados cadastrais, financeiros e quadro societário.</p>
         </div>
 
-        {/* Formulário de Busca - Escondido na impressão */}
+      
         <form onSubmit={handleSearch} className="w-full max-w-3xl mx-auto flex items-center gap-4 print:hidden">
           <input
             type="text"
@@ -119,7 +119,7 @@ export default function Home() {
         )}
 
         {resultado && (
-          // Customizamos as bordas e removemos sombras para a folha de papel física
+          
           <div className="bg-white rounded-xl shadow-lg border border-gray-100 divide-y divide-gray-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 print:shadow-none print:border-0 print:divide-gray-300">
             
             {/* Bloco 1: Identificação Principal + Botão de Impressão */}
@@ -134,7 +134,7 @@ export default function Home() {
                 )}
               </div>
               
-              {/* Botão de Impressão - Escondido ao imprimir */}
+             
               <button
                 onClick={() => window.print()}
                 className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg shadow-sm flex items-center gap-2 transition-all print:hidden"
@@ -146,7 +146,7 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Bloco 2: Informações Fiscais & Financeiras */}
+           
             <div className="p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 print:p-0 print:py-4 print:grid-cols-3">
               <div>
                 <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-1 print:text-black print:font-bold">Situação Cadastral</p>
@@ -166,7 +166,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Bloco 3: Atividade Econômica (CNAE) */}
+           
             {resultado.cnae_principal && (
               <div className="p-6 print:p-0 print:py-4">
                 <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2 print:text-black print:font-bold">Atividade Econômica Principal (CNAE)</p>
@@ -176,7 +176,7 @@ export default function Home() {
               </div>
             )}
 
-            {/* Bloco 4: Localização */}
+           
             <div className="p-6 print:p-0 print:py-4">
               <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2 print:text-black print:font-bold">Endereço Completo</p>
               <p className="text-sm text-gray-800">
@@ -188,7 +188,7 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Bloco 5: Inscrições Estaduais */}
+           
             <div className="p-6 print:p-0 print:py-4">
               <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3 print:text-black print:font-bold">Inscrições Estaduais</p>
               {resultado.inscricoes_estaduais && resultado.inscricoes_estaduais.length > 0 ? (
@@ -206,11 +206,11 @@ export default function Home() {
               )}
             </div>
 
-            {/* Bloco 6: Quadro de Sócios e Administradores (QSA) */}
+            
             <div className="p-6 bg-gray-50/50 print:bg-white print:p-0 print:py-4">
               <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3 print:text-black print:font-bold">Quadro de Sócios e Administradores (QSA)</p>
               {resultado.qsa && resultado.qsa.length > 0 ? (
-                // Na impressão, transformamos os cards em uma tabela listada limpa
+                
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 print:grid-cols-1 print:gap-2">
                   {resultado.qsa.map((socio: any, idx: number) => (
                     <div key={idx} className="bg-white p-3 rounded-lg border border-gray-200/80 shadow-sm flex flex-col justify-center print:p-0 print:border-none print:shadow-none">
