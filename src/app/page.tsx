@@ -91,7 +91,7 @@ export default function Home() {
 
         <div className="text-center space-y-2 print:hidden">
           <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Consulta de CNPJ</h1>
-          <p className="text-gray-500 max-w-md mx-auto">Consulta profunda de dados cadastrais, financeiros e quadro societário.</p>
+          <p className="text-gray-500 max-w-md mx-auto">Consulta de dados cadastrais, financeiros e quadro societário.</p>
         </div>
 
       
