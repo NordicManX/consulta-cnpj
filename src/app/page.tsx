@@ -95,8 +95,8 @@ export default function Home() {
       <div className="w-full max-w-4xl space-y-6">
         
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Dossiê Corporativo de CNPJ</h1>
-          <p className="text-gray-500 max-w-md mx-auto">Consulta profunda de dados cadastrais, financeiros e quadro societário.</p>
+          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Consulta CNPJ</h1>
+          <p className="text-gray-500 max-w-md mx-auto">Consulta de dados cadastrais, financeiros e quadro societário.</p>
         </div>
 
         <form onSubmit={handleSearch} className="w-full max-w-3xl mx-auto flex items-center gap-4">
