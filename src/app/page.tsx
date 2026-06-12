@@ -1,65 +1,70 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import { maskCnpj } from '../utils/mask';
 
 export default function Home() {
+  const [cnpjInput, setCnpjInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Função que lida com a digitação no input
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatado = maskCnpj(e.target.value);
+    setCnpjInput(formatado);
+  };
+
+  // Função disparada ao clicar no botão ou apertar Enter
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (cnpjInput.length < 18) return; // 14 dígitos + 4 caracteres da máscara
+
+    setIsLoading(true);
+    // Aqui entrará a lógica de integração no próximo passo!
+    console.log('Buscando CNPJ:', cnpjInput);
+    
+    // Simulando um tempo de carregamento apenas para testar o visual do botão
+    setTimeout(() => setIsLoading(false), 1000);
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-gray-50 p-8 flex flex-col items-center justify-center font-sans">
+      <div className="w-full max-w-3xl space-y-8">
+        
+        {/* Cabeçalho */}
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-gray-900">Consulta Inteligente de CNPJ</h1>
+          <p className="text-gray-500 mt-2">Busca rápida com Inscrição Estadual e cachê inteligente.</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Formulário de Busca */}
+        <form onSubmit={handleSearch} className="w-full max-w-3xl mx-auto flex items-center gap-4">
+  <input
+    type="text"
+    value={cnpjInput}
+    onChange={handleInputChange}
+    placeholder="07.307.860/0001-11"
+    // Adicionei flex-1 para o input ocupar o espaço disponível e manter o alinhamento
+    className="flex-1 px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-lg text-gray-900 placeholder-gray-400 bg-white"
+  />
+  <button
+    type="submit"
+    disabled={isLoading || cnpjInput.length < 18}
+    // Removi paddings horizontais exagerados para o botão não quebrar a linha
+    className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-sm hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all whitespace-nowrap"
+  >
+    {isLoading ? 'Buscando...' : 'Consultar'}
+  </button>
+</form>
+
+        {/* Área reservada para o Card de Resultado (Por enquanto vazio visualmente, aguardando os dados) */}
+        <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100 min-h-[200px] flex items-center justify-center text-gray-400">
+          Nenhum CNPJ consultado ainda. Digite acima para começar.
         </div>
-      </main>
-    </div>
+
+      </div>
+      <footer className="mt-12 text-center text-gray-500 text-sm">
+        &copy; Desenvolvido por Nordic-Tech - 2026 Consulta CNPJ. Todos os direitos reservados.
+      </footer>
+    </main>
   );
 }
