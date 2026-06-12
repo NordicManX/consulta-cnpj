@@ -1,9 +1,9 @@
 export const maskCnpj = (value: string) => {
   return value
-    .replace(/\D/g, "") // Remove tudo o que não é dígito
-    .replace(/(\d{2})(\d)/, "$1.$2") // Coloca um ponto entre o segundo e o terceiro dígitos
-    .replace(/(\d{3})(\d)/, "$1.$2") // Coloca um ponto entre o quinto e o sexto dígitos
-    .replace(/(\d{3})(\d)/, "$1/$2") // Coloca uma barra entre o oitavo e o nono dígitos
-    .replace(/(\d{4})(\d{1,2})/, "$1-$2") // Coloca um hífen depois do bloco de quatro dígitos
-    .replace(/(-\d{2})\d+?$/, "$1"); // Impede que o usuário digite mais do que 14 dígitos
+    .replace(/\D/g, "")
+    .replace(/(\d{2})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d)/, "$1/$2")
+    .replace(/(\d{4})(\d{1,2})/, "$1-$2")
+    .replace(/(-\d{2})\d+?$/, "$1");
 };

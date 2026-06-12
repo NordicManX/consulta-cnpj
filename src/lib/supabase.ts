@@ -9,5 +9,4 @@ if (!supabaseUrl || !supabaseAnonKey) {
   );
 }
 
-// Inicializa o cliente global que usaremos para fazer o CRUD (Create, Read, Update, Delete)
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
